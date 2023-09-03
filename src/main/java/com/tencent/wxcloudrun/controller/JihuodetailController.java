@@ -58,26 +58,26 @@ public class JihuodetailController {
     return ApiResponse.ok(jihuodetail);
   }
 
-  /**
-   * 新增集火
-   * @param request {@link JihuodetailRequest}
-   * @return API response json
-   */
-  @PostMapping(value = "/api/jihuodetail")
-  ApiResponse create(@RequestBody JihuodetailRequest request) {
-    logger.info("/api/jihuodetail post request, action: {}", request.toString());
+  // /**
+  //  * 新增集火
+  //  * @param request {@link JihuodetailRequest}
+  //  * @return API response json
+  //  */
+  // @PostMapping(value = "/api/jihuodetail")
+  // ApiResponse create(@RequestBody JihuodetailRequest request) {
+  //   logger.info("/api/jihuodetail post request, action: {}", request.toString());
 
-    Jihuodetail jihuodetail = new Jihuodetail();
+  //   Jihuodetail jihuodetail = new Jihuodetail();
 
-    jihuodetail.setId(request.getId());
-    jihuodetail.setJihuoid(request.getJihuoid());
-    jihuodetail.setNum(request.getNum());
-    jihuodetail.setDesc(request.getDesc());
-    jihuodetail.setCreatetime(request.getCreatetime());
-    jihuodetail.setIsaction(request.getIsaction());
+  //   jihuodetail.setId(request.getId());
+  //   jihuodetail.setJihuoid(request.getJihuoid());
+  //   jihuodetail.setNum(request.getNum());
+  //   jihuodetail.setDesc(request.getDesc());
+  //   jihuodetail.setCreatetime(request.getCreatetime());
+  //   jihuodetail.setIsaction(request.getIsaction());
 
-    jihuodetailService.upsertJihuodetail(jihuodetail);
-    return ApiResponse.ok(jihuodetail);
-  }
+  //   jihuodetailService.upsertJihuodetail(jihuodetail);
+  //   return ApiResponse.ok(jihuodetail);
+  // }
   
 }

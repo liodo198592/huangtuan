@@ -33,3 +33,4 @@ target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
 src/main/resources/application.yml
 .vscode/settings.json
 src/main/resources/application.yml
+src/main/resources/application.yml

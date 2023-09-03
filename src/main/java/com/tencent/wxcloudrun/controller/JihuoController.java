@@ -58,26 +58,26 @@ public class JihuoController {
   }
 
 
-  /**
-   * 新增集火
-   * @param request {@link JihuoRequest}
-   * @return API response json
-   */
-  @PostMapping(value = "/api/jihuo")
-  ApiResponse create(@RequestBody JihuoRequest request) {
-    logger.info("/api/jihuo post request, action: {}", request.toString());
+  // /**
+  //  * 新增集火
+  //  * @param request {@link JihuoRequest}
+  //  * @return API response json
+  //  */
+  // @PostMapping(value = "/api/jihuo")
+  // ApiResponse create(@RequestBody JihuoRequest request) {
+  //   logger.info("/api/jihuo post request, action: {}", request.toString());
 
-    Jihuo jihuo = new Jihuo();
-    jihuo.setId(request.getId());
-    jihuo.setPosx(request.getPosx());
-    jihuo.setPosy(request.getPosy());
-    jihuo.setDesc(request.getDesc());
-    jihuo.setUser(request.getUser());
-    jihuo.setJihuotime(request.getJihuotime());
-    jihuo.setCreatetime(request.getCreatetime());
+  //   Jihuo jihuo = new Jihuo();
+  //   jihuo.setId(request.getId());
+  //   jihuo.setPosx(request.getPosx());
+  //   jihuo.setPosy(request.getPosy());
+  //   jihuo.setDesc(request.getDesc());
+  //   jihuo.setUser(request.getUser());
+  //   jihuo.setJihuotime(request.getJihuotime());
+  //   jihuo.setCreatetime(request.getCreatetime());
 
-    jihuoService.upsertJihuo(jihuo);
-    return ApiResponse.ok(jihuo);
-  }
+  //   jihuoService.upsertJihuo(jihuo);
+  //   return ApiResponse.ok(jihuo);
+  // }
   
 }
