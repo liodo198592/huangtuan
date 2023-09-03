@@ -1,5 +1,7 @@
 package com.tencent.wxcloudrun.dto;
 
+import java.time.LocalDateTime;
+
 import lombok.Data;
 
 @Data
@@ -15,8 +17,8 @@ public class JihuoRequest {
 
   private String user;
 
-  private DateTime jihuotime;
+  private LocalDateTime jihuotime;
 
-  private DateTime createtime;
+  private LocalDateTime createtime;
 
 }

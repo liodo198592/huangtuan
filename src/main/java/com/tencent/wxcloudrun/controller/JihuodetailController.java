@@ -40,13 +40,23 @@ public class JihuodetailController {
   ApiResponse get() {
     logger.info("/api/jihuodetail get request");
     Optional<Jihuodetail> jihuodetail = jihuodetailService.getJihuodetail(1);
-    Jihuodetail jihuodetail;
+    Jihuodetail jihuodetailunit = new Jihuodetail();
     if (jihuodetail.isPresent()) {
-      jihuodetail = jihuodetail.get();
+      jihuodetailunit = jihuodetail.get();
     }
-    return ApiResponse.ok(jihuodetail);
+    return ApiResponse.ok(jihuodetailunit);
   }
 
+    /**
+   * 获取集火数据
+   * @return API response json
+   */
+  @GetMapping(value = "/api/jihuodetailall")
+  ApiResponse getall() {
+    logger.info("/api/jihuodetail get request");
+    List<Jihuodetail> jihuodetail = jihuodetailService.getJihuodetailall();
+    return ApiResponse.ok(jihuodetail);
+  }
 
   /**
    * 新增集火
@@ -55,7 +65,7 @@ public class JihuodetailController {
    */
   @PostMapping(value = "/api/jihuodetail")
   ApiResponse create(@RequestBody JihuodetailRequest request) {
-    logger.info("/api/jihuodetail post request, action: {}", request.getAction());
+    logger.info("/api/jihuodetail post request, action: {}", request.toString());
 
     Jihuodetail jihuodetail = new Jihuodetail();
 

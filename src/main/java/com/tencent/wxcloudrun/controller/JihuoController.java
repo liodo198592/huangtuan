@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.List;
 
@@ -40,10 +39,21 @@ public class JihuoController {
   ApiResponse get() {
     logger.info("/api/jihuo get request");
     Optional<Jihuo> jihuo = jihuoService.getJihuo(1);
-    Jihuo jihuo;
+    Jihuo jihuounit = new Jihuo();
     if (jihuo.isPresent()) {
-      jihuo = jihuo.get();
+      jihuounit = jihuo.get();
     }
+    return ApiResponse.ok(jihuounit);
+  }
+
+    /**
+   * 获取集火数据
+   * @return API response json
+   */
+  @GetMapping(value = "/api/jihuoall")
+  ApiResponse getall() {
+    logger.info("/api/jihuoall get request");
+    List<Jihuo> jihuo = jihuoService.getJihuoall();
     return ApiResponse.ok(jihuo);
   }
 
@@ -55,7 +65,7 @@ public class JihuoController {
    */
   @PostMapping(value = "/api/jihuo")
   ApiResponse create(@RequestBody JihuoRequest request) {
-    logger.info("/api/jihuo post request, action: {}", request.getAction());
+    logger.info("/api/jihuo post request, action: {}", request.toString());
 
     Jihuo jihuo = new Jihuo();
     jihuo.setId(request.getId());

@@ -2,7 +2,7 @@ package com.tencent.wxcloudrun.service.impl;
 
 import com.tencent.wxcloudrun.dao.JihuodetailMapper;
 import com.tencent.wxcloudrun.model.Jihuodetail;
-import com.tencent.wxcloudrun.service.Jihuodetailervice;
+import com.tencent.wxcloudrun.service.JihuodetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,17 +10,22 @@ import java.util.Optional;
 import java.util.List;
 
 @Service
-public class JihuodetailerviceImpl implements Jihuodetailervice {
+public class JihuodetailServiceImpl implements JihuodetailService {
 
   final JihuodetailMapper jihuodetailMapper;
 
-  public JihuodetailerviceImpl(@Autowired JihuodetailMapper jihuodetailMapper) {
+  public JihuodetailServiceImpl(@Autowired JihuodetailMapper jihuodetailMapper) {
     this.jihuodetailMapper = jihuodetailMapper;
   }
 
   @Override
   public Optional<Jihuodetail> getJihuodetail(Integer id) {
     return Optional.ofNullable(jihuodetailMapper.getJihuodetail(id));
+  }
+
+  @Override
+  public List<Jihuodetail> getJihuodetailall() {
+    return jihuodetailMapper.getJihuodetailall();
   }
 
   @Override

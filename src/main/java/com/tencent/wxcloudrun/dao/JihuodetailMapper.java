@@ -8,7 +8,9 @@ import java.util.List;
 @Mapper
 public interface JihuodetailMapper {
 
-  Counter getJihuodetail(@Param("id") Integer id);
+  Jihuodetail getJihuodetail(@Param("id") Integer id);
+
+  List<Jihuodetail> getJihuodetailall();
 
   void upsertJihuodetail(Jihuodetail jihuodetail);
 

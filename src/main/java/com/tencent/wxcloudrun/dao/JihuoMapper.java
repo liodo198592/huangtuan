@@ -10,6 +10,8 @@ public interface JihuoMapper {
 
   Jihuo getJihuo(@Param("id") Integer id);
 
+  List<Jihuo> getJihuoall();
+
   void upsertJihuo(Jihuo jihuo);
 
   void clearJihuo(@Param("id") Integer id);

@@ -24,8 +24,14 @@ public class JihuoServiceImpl implements JihuoService {
   }
 
   @Override
+  public List<Jihuo> getJihuoall()
+  {
+    return jihuoMapper.getJihuoall();
+  }
+
+  @Override
   public void upsertJihuo(Jihuo jihuo) {
-    countersMapper.upsertCount(jihuo);
+    jihuoMapper.upsertJihuo(jihuo);
   }
 
   @Override
