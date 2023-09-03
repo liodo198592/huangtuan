@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tencent.wxcloudrun.dao.JihuoMapper">
+
+    <resultMap id="JihuoMapper" type="com.tencent.wxcloudrun.model.Jihuo">
+        <id property="id" column="id"/>
+        <result property="posx" column="posx"/>
+        <result property="posy" column="posy"/>
+        <result property="desc" column="desc"/>
+        <result property="user" column="user"/>
+        <result property="count" column="count"/>
+        <result property="jihuotime" column="jihuotime" javaType="java.time.LocalDateTime" />
+        <result property="createtime" column="createtime" javaType="java.time.LocalDateTime"  />
+    </resultMap>
+
+    <select id="getJihuo" resultMap="JihuoMapper" parameterType="java.lang.Integer">
+        SELECT `id`, `posx`, `posy`, `desc`, `user`, `jihuotime`, `createtime` 
+        FROM jihuo
+        WHERE id = #{id}
+    </select>
+
+    <delete id="clearJihuo" parameterType="java.lang.Integer">
+        DELETE
+        FROM jihuo
+        where id = #{id}
+        limit 1
+    </delete>
+
+    <update id="upsertJihuo" parameterType="com.tencent.wxcloudrun.model.Jihuo">
+        INSERT INTO `jihuo`(`id`, `posx`, `posy`, `desc`, `user`, `jihuotime`, `createtime`)
+        VALUE(#{id}, #{posx}, #{posy}, #{desc}, #{user}, #{jihuotime}, #{createtime}) 
+        ON DUPLICATE KEY UPDATE posx=#{posx}, posy=#{posy}, desc=#{desc}, user=#{user}, jihuotime=#{jihuotime}, createtime=#{createtime}
+    </update>
+
+</mapper>

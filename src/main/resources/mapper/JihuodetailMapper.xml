@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tencent.wxcloudrun.dao.JihuodetailMapper">
+
+    <resultMap id="JihuodetailMapper" type="com.tencent.wxcloudrun.model.Jihuodetail">
+        <id property="id" column="id"/>
+        <result property="jihuoid" column="jihuoid"/>
+        <result property="canyuuser" column="canyuuser"/>
+        <result property="num" column="num"/>
+        <result property="desc" column="desc"/>
+        <result property="createtime" column="createtime" javaType="java.time.LocalDateTime"  />
+        <result property="isaction" column="isaction"/>
+    </resultMap>
+
+    <select id="getJihuodetail" resultMap="JihuodetailMapper" parameterType="java.lang.Integer">
+        SELECT `id`, `jihuoid`, `canyuuser`, `num`, `desc`, `createtime`, `isaction` 
+        FROM jihuodetail
+        WHERE id = #{id}
+    </select>
+
+    <delete id="clearJihuodetail" parameterType="java.lang.Integer">
+        DELETE
+        FROM jihuodetail
+        where id = #{id}
+        limit 1
+    </delete>
+
+    <update id="upsertJihuodetail" parameterType="com.tencent.wxcloudrun.model.Jihuodetail">
+        INSERT INTO `jihuodetail`(`id`, `jihuoid`, `canyuuser`, `num`, `desc`, `createtime`, `isaction` )
+        VALUE(#{id}, #{jihuoid}, #{canyuuser}, #{num}, #{desc}, #{createtime}, #{isaction}) 
+        ON DUPLICATE KEY UPDATE jihuoid=#{jihuoid}, canyuuser=#{canyuuser}, num=#{num}, desc=#{desc}, createtime=#{createtime}, isaction=#{isaction}
+    </update>
+
+</mapper>
