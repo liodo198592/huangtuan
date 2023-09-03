@@ -15,8 +15,8 @@ public class JihuoRequest {
 
   private String user;
 
-  private LocalDateTime jihuotime;
+  private DateTime jihuotime;
 
-  private LocalDateTime createtime;
+  private DateTime createtime;
 
 }

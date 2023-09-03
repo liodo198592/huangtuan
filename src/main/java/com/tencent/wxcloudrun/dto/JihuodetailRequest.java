@@ -15,7 +15,7 @@ public class JihuodetailRequest {
 
   private String desc;
 
-  private LocalDateTime createtime;
+  private DateTime createtime;
 
   private Integer isaction;
 
