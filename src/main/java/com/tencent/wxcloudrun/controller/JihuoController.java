@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
@@ -36,9 +37,9 @@ public class JihuoController {
    * @return API response json
    */
   @GetMapping(value = "/api/jihuo")
-  ApiResponse get() {
+  ApiResponse get(@RequestParam(value = "Id") Integer id) {
     logger.info("/api/jihuo get request");
-    Optional<Jihuo> jihuo = jihuoService.getJihuo(1);
+    Optional<Jihuo> jihuo = jihuoService.getJihuo(id);
     Jihuo jihuounit = new Jihuo();
     if (jihuo.isPresent()) {
       jihuounit = jihuo.get();

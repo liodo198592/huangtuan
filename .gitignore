@@ -34,3 +34,10 @@ src/main/resources/application.yml
 .vscode/settings.json
 src/main/resources/application.yml
 src/main/resources/application.yml
+target/classes/com/tencent/wxcloudrun/controller/MemberController.class
+target/classes/com/tencent/wxcloudrun/dao/MemberMapper.class
+target/classes/com/tencent/wxcloudrun/dto/MemberRequest.class
+target/classes/com/tencent/wxcloudrun/model/Member.class
+target/classes/com/tencent/wxcloudrun/service/MemberService.class
+target/classes/com/tencent/wxcloudrun/service/impl/MemberServiceImpl.class
+target/classes/mapper/MemberMapper.xml

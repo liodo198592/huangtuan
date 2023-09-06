@@ -1,0 +1,41 @@
+package com.tencent.wxcloudrun.service.impl;
+
+import com.tencent.wxcloudrun.dao.MemberMapper;
+import com.tencent.wxcloudrun.model.Member;
+import com.tencent.wxcloudrun.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+import java.util.List;
+
+@Service
+public class MemberServiceImpl implements MemberService {
+
+  final MemberMapper memberMapper;
+
+  public MemberServiceImpl(@Autowired MemberMapper memberMapper) {
+    this.memberMapper = memberMapper;
+  }
+
+  @Override
+  public Optional<Member> getMember(Integer id) {
+    return Optional.ofNullable(memberMapper.getMember(id));
+  }
+
+  @Override
+  public List<Member> getMemberall()
+  {
+    return memberMapper.getMemberall();
+  }
+
+  @Override
+  public void upsertMember(Member member) {
+    memberMapper.upsertMember(member);
+  }
+
+  @Override
+  public void clearMember(Integer id) {
+    memberMapper.clearMember(id);
+  }
+}
