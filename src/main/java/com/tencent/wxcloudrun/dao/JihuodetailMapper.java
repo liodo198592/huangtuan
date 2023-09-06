@@ -10,6 +10,8 @@ public interface JihuodetailMapper {
 
   Jihuodetail getJihuodetail(@Param("id") Integer id);
 
+  List<Jihuodetail>  getJihuodetailbyjihuoid(@Param("id") Integer id);
+
   List<Jihuodetail> getJihuodetailall();
 
   void upsertJihuodetail(Jihuodetail jihuodetail);

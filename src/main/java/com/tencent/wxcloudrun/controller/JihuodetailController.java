@@ -52,6 +52,17 @@ public class JihuodetailController {
    * 获取集火数据
    * @return API response json
    */
+  @GetMapping(value = "/api/getJihuodetailbyjihuoid")
+  ApiResponse getJihuodetailbyjihuoid(@RequestParam(value = "Id") Integer id) {
+    logger.info("/api/jihuodetail get request");
+    List<Jihuodetail> jihuodetail = jihuodetailService.getJihuodetailbyjihuoid(id);
+    return ApiResponse.ok(jihuodetail);
+  }
+
+    /**
+   * 获取集火数据
+   * @return API response json
+   */
   @GetMapping(value = "/api/jihuodetailall")
   ApiResponse getall() {
     logger.info("/api/jihuodetail get request");

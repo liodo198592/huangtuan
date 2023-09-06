@@ -24,6 +24,11 @@ public class JihuodetailServiceImpl implements JihuodetailService {
   }
 
   @Override
+  public List<Jihuodetail>  getJihuodetailbyjihuoid(Integer id){
+    return jihuodetailMapper.getJihuodetailbyjihuoid(id);
+  }
+
+  @Override
   public List<Jihuodetail> getJihuodetailall() {
     return jihuodetailMapper.getJihuodetailall();
   }

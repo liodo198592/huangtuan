@@ -18,6 +18,12 @@
         WHERE id = #{id}
     </select>
 
+    <select id="getJihuodetailbyjihuoid" resultMap="JihuodetailMapper" parameterType="java.lang.Integer">
+        SELECT `id`, `jihuoid`, `canyuuser`, `num`, `desc`, `createtime`, `isaction` 
+        FROM Jihuodetail
+        WHERE jihuoid = #{id}
+    </select>
+
     <select id="getJihuodetailall" resultMap="JihuodetailMapper" parameterType="java.lang.Integer">
         SELECT `id`, `jihuoid`, `canyuuser`, `num`, `desc`, `createtime`, `isaction` 
         FROM Jihuodetail
