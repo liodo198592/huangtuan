@@ -39,7 +39,7 @@ public class JihuodetailServiceImpl implements JihuodetailService {
   }
 
   @Override
-  public void clearJihuodetail(Integer id) {
-    jihuodetailMapper.clearJihuodetail(id);
+  public void clearJihuodetail(Jihuodetail jihuodetail) {
+    jihuodetailMapper.clearJihuodetail(jihuodetail);
   }
 }

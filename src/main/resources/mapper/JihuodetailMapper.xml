@@ -30,17 +30,15 @@
         order by `id` desc
     </select>
 
-    <delete id="clearJihuodetail" parameterType="java.lang.Integer">
+    <delete id="clearJihuodetail" parameterType="com.tencent.wxcloudrun.model.Jihuodetail">
         DELETE
         FROM Jihuodetail
-        where id = #{id}
-        limit 1
+        where `jihuoid` = #{jihuoid} and `canyuuser` = #{canyuuser}
     </delete>
 
     <update id="upsertJihuodetail" parameterType="com.tencent.wxcloudrun.model.Jihuodetail">
-        INSERT INTO `Jihuodetail`(`id`, `jihuoid`, `canyuuser`, `num`, `desc`, `createtime`, `isaction` )
-        VALUE(#{id}, #{jihuoid}, #{canyuuser}, #{num}, #{desc}, #{createtime}, #{isaction}) 
-        ON DUPLICATE KEY UPDATE jihuoid=#{jihuoid}, canyuuser=#{canyuuser}, num=#{num}, desc=#{desc}, createtime=#{createtime}, isaction=#{isaction}
+        INSERT INTO `Jihuodetail`(`jihuoid`, `canyuuser`, `num`, `desc`, `createtime`, `isaction` )
+        VALUE(#{jihuoid}, #{canyuuser}, #{num}, #{desc}, #{createtime}, #{isaction}) 
     </update>
 
 </mapper>

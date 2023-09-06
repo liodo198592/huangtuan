@@ -15,5 +15,5 @@ public interface JihuodetailService {
 
   void upsertJihuodetail(Jihuodetail jihuodetail);
 
-  void clearJihuodetail(Integer id);
+  void clearJihuodetail(Jihuodetail jihuodetail);
 }

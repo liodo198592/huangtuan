@@ -16,5 +16,5 @@ public interface JihuodetailMapper {
 
   void upsertJihuodetail(Jihuodetail jihuodetail);
 
-  void clearJihuodetail(@Param("id") Integer id);
+  void clearJihuodetail(Jihuodetail jihuodetail);
 }

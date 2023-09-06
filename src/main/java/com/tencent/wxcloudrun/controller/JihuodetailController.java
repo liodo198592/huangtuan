@@ -81,12 +81,14 @@ public class JihuodetailController {
 
     Jihuodetail jihuodetail = new Jihuodetail();
 
-    jihuodetail.setId(request.getId());
     jihuodetail.setJihuoid(request.getJihuoid());
+    jihuodetail.setCanyuuser(request.getCanyuuser());
     jihuodetail.setNum(request.getNum());
-    jihuodetail.setDesc(request.getDesc());
-    jihuodetail.setCreatetime(request.getCreatetime());
-    jihuodetail.setIsaction(request.getIsaction());
+    jihuodetail.setDesc("");
+    jihuodetail.setIsaction(0);
+    jihuodetail.setCreatetime(LocalDateTime.now());
+
+    jihuodetailService.clearJihuodetail(jihuodetail);
 
     jihuodetailService.upsertJihuodetail(jihuodetail);
     return ApiResponse.ok(jihuodetail);
