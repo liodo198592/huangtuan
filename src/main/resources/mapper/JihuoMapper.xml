@@ -22,7 +22,7 @@
     <select id="getJihuoall" resultMap="JihuoMapper" parameterType="java.lang.Integer">
         SELECT `id`, `posx`, `posy`, `desc`, `user`, `jihuotime`, `createtime` 
         FROM Jihuo
-        order by `id` desc
+        order by `id` desc limit 10
     </select>
 
     <delete id="clearJihuo" parameterType="java.lang.Integer">
@@ -33,9 +33,8 @@
     </delete>
 
     <update id="upsertJihuo" parameterType="com.tencent.wxcloudrun.model.Jihuo">
-        INSERT INTO `Jihuo`(`id`, `posx`, `posy`, `desc`, `user`, `jihuotime`, `createtime`)
-        VALUE(#{id}, #{posx}, #{posy}, #{desc}, #{user}, #{jihuotime}, #{createtime}) 
-        ON DUPLICATE KEY UPDATE posx=#{posx}, posy=#{posy}, desc=#{desc}, user=#{user}, jihuotime=#{jihuotime}, createtime=#{createtime}
+        INSERT INTO `Jihuo`(`posx`, `posy`, `desc`, `user`, `jihuotime`, `createtime`)
+        VALUE(#{posx}, #{posy}, #{desc}, #{user}, #{jihuotime}, #{createtime}) 
     </update>
 
 </mapper>
