@@ -15,6 +15,14 @@
         WHERE id = #{id}
     </select>
 
+    <select id="getManage" resultType="String" parameterType="java.lang.String">
+        SELECT `manage` 
+        FROM Member
+        WHERE wxid = #{openid} 
+        order by `id` desc 
+        limit 1
+    </select>
+
     <select id="getMemberall" resultMap="MemberMapper" parameterType="java.lang.Integer">
         SELECT `id`, `name`, `wxid`, `manage` 
         FROM Member

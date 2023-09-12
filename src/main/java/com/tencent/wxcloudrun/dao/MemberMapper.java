@@ -10,6 +10,9 @@ public interface MemberMapper {
 
   Member getMember(@Param("id") Integer id);
 
+
+  String getManage(@Param("openid") String openid);
+
   List<Member> getMemberall();
 
   void upsertMember(Member member);

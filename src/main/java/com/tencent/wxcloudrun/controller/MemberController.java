@@ -51,6 +51,17 @@ public class MemberController {
    * 获取集火数据
    * @return API response json
    */
+  @GetMapping(value = "/api/memberismanage")
+  ApiResponse ismanage(@RequestParam(value = "openid") String openid) {
+    logger.info("/api/member get request");
+    String member = memberService.getManage(openid);
+    return ApiResponse.ok(member);
+  }
+
+    /**
+   * 获取集火数据
+   * @return API response json
+   */
   @GetMapping(value = "/api/memberall")
   ApiResponse getall() {
     logger.info("/api/memberall get request");

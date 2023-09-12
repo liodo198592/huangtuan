@@ -3,6 +3,8 @@ package com.tencent.wxcloudrun.service.impl;
 import com.tencent.wxcloudrun.dao.MemberMapper;
 import com.tencent.wxcloudrun.model.Member;
 import com.tencent.wxcloudrun.service.MemberService;
+
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,5 +39,10 @@ public class MemberServiceImpl implements MemberService {
   @Override
   public void clearMember(Integer id) {
     memberMapper.clearMember(id);
+  }
+
+  @Override
+  public String getManage(String openid){
+    return memberMapper.getManage(openid);
   }
 }
