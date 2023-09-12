@@ -51,6 +51,15 @@ public class JihuoController {
    * 获取集火数据
    * @return API response json
    */
+  @GetMapping(value = "/api/jihuocrt")
+  ApiResponse crt() {
+    return ApiResponse.ok("8f7174bcff462394b91c05d441854a20");
+  }
+
+    /**
+   * 获取集火数据
+   * @return API response json
+   */
   @GetMapping(value = "/api/jihuoall")
   ApiResponse getall() {
     logger.info("/api/jihuoall get request");
