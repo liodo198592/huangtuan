@@ -56,6 +56,8 @@ public class JihuoController {
     return ApiResponse.ok("8f7174bcff462394b91c05d441854a20");
   }
 
+
+
     /**
    * 获取集火数据
    * @return API response json
@@ -66,7 +68,6 @@ public class JihuoController {
     List<Jihuo> jihuo = jihuoService.getJihuoall();
     return ApiResponse.ok(jihuo);
   }
-
 
   /**
    * 新增集火
