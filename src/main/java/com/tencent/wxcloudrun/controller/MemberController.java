@@ -7,6 +7,7 @@ import com.tencent.wxcloudrun.dto.MemberRequest;
 import com.tencent.wxcloudrun.model.Member;
 import com.tencent.wxcloudrun.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +25,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import com.alibaba.fastjson.JSON;
 
 /**
  * member控制器
@@ -105,7 +107,12 @@ public class MemberController {
       e.printStackTrace();
     }
     System.out.println(content);
-    return ApiResponse.ok(content);
+    //需要替换掉key
+    
+    com.alibaba.fastjson.JSONObject jsonObject =  JSON.parseObject(content);
+    jsonObject.remove("session_key");
+    System.out.println(jsonObject.toString());
+    return ApiResponse.ok(jsonObject.toString());
   }
 
 
