@@ -37,6 +37,11 @@ public class KaoqinServiceImpl implements KaoqinService {
   }
 
   @Override
+  public void insertKaoqin(Kaoqin kaoqin) {
+    kaoqinMapper.insertKaoqin(kaoqin);
+  }
+
+  @Override
   public void deleteKaoqin(Integer id) {
     kaoqinMapper.deleteKaoqin(id);
   }

@@ -14,5 +14,8 @@ public interface KaoqinMapper {
 
   void updateKaoqin(Kaoqin kaoqin);
 
+
+  void insertKaoqin(Kaoqin kaoqin);
+
   void deleteKaoqin(@Param("id") Integer id);
 }

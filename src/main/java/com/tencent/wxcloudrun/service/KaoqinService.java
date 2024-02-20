@@ -16,6 +16,8 @@ public interface KaoqinService {
 
   void updateKaoqin(Kaoqin kaoqin);
 
+  void insertKaoqin(Kaoqin kaoqin);
+
   void deleteKaoqin(Integer id);
   
 }

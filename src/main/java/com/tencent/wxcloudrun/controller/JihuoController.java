@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.List;
 
@@ -85,7 +85,7 @@ public class JihuoController {
     jihuo.setDesc(request.getDesc());
     jihuo.setUser(request.getUser());
     jihuo.setJihuotime(request.getJihuotime());
-    jihuo.setCreatetime(request.getCreatetime());
+    jihuo.setCreatetime(LocalDateTime.now());
 
     jihuoService.upsertJihuo(jihuo);
     return ApiResponse.ok(jihuo);

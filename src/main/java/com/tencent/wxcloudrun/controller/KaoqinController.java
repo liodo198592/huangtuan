@@ -24,6 +24,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
 import java.util.List;
 import com.alibaba.fastjson.JSON;
 
@@ -81,11 +82,11 @@ public class KaoqinController {
     Kaoqin kaoqin = new Kaoqin();
     kaoqin.setId(request.getId());
     kaoqin.setDesc(request.getDesc());
-    kaoqin.setDesc(request.getDesc());
-    kaoqin.setCreatetime(request.getCreatetime());
+    kaoqin.setUser(request.getUser());
+    kaoqin.setCreatetime(LocalDateTime.now());
     kaoqin.setLimittime(request.getLimittime());
 
-    kaoqinService.updateKaoqin(kaoqin);
+    kaoqinService.insertKaoqin(kaoqin);
     return ApiResponse.ok(kaoqin);
   }
   
