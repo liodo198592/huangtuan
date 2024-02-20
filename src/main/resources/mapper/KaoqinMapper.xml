@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tencent.wxcloudrun.dao.KaoqinMapper">
+
+    <resultMap id="KaoqinMapper" type="com.tencent.wxcloudrun.model.Kaoqin">
+        <id property="id" column="id"/>
+        <result property="desc" column="desc"/>
+        <result property="user" column="user"/>
+        <result property="limittime" column="limittime"/>
+        <result property="createtime" column="createtime"/>
+    </resultMap>
+
+    <select id="getKaoqin" resultMap="KaoqinMapper" parameterType="java.lang.Integer">
+        SELECT `id`, `desc`, `user`, `limittime`, `createtime`
+        FROM Kaoqin
+        WHERE id = #{id}
+    </select>
+
+    <select id="getAllKaoqin" resultMap="KaoqinMapper">
+        SELECT `id`, `desc`, `user`, `limittime`, `createtime`
+        FROM Kaoqin
+    </select>
+
+    <insert id="insertKaoqin" parameterType="com.tencent.wxcloudrun.model.Kaoqin">
+        INSERT INTO `Kaoqin`(`desc`, `user`, `limittime`, `createtime`)
+        VALUES (#{desc}, #{user}, #{limittime}, #{createtime})
+    </insert>
+
+    <update id="updateKaoqin" parameterType="com.tencent.wxcloudrun.model.Kaoqin">
+        UPDATE `Kaoqin`
+        SET `desc` = #{desc}, `user` = #{user}, `limittime` = #{limittime}, `createtime` = #{createtime}
+        WHERE `id` = #{id}
+    </update>
+
+    <delete id="deleteKaoqin" parameterType="java.lang.Integer">
+        DELETE FROM `Kaoqin`
+        WHERE `id` = #{id}
+    </delete>
+
+</mapper>

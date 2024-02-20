@@ -48,3 +48,15 @@ src/main/resources/application.yml
 pom.xml
 .gitignore
 src/main/resources/application.yml
+target/classes/.DS_Store
+target/classes/com/.DS_Store
+target/classes/com/tencent/wxcloudrun/controller/KaoqinController.class
+target/classes/com/tencent/wxcloudrun/dao/KaoqinMapper.class
+target/classes/com/tencent/wxcloudrun/dto/KaoqinRequest.class
+target/classes/com/tencent/wxcloudrun/model/Kaoqin.class
+target/classes/com/tencent/wxcloudrun/service/KaoqinService.class
+target/classes/com/tencent/wxcloudrun/service/impl/KaoqinServiceImpl.class
+target/classes/mapper/KaoqinMapper.xml
+src/main/.DS_Store
+src/.DS_Store
+.DS_Store
