@@ -18,7 +18,8 @@
 
     <select id="getAllKaoqin" resultMap="KaoqinMapper">
         SELECT `id`, `desc`, `user`, `limittime`, `createtime`
-        FROM Kaoqin
+        FROM Kaoqin 
+        order by `id` desc limit 10
     </select>
 
     <insert id="insertKaoqin" parameterType="com.tencent.wxcloudrun.model.Kaoqin">
