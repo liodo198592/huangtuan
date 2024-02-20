@@ -43,4 +43,8 @@ target/classes/com/tencent/wxcloudrun/service/impl/MemberServiceImpl.class
 target/classes/mapper/MemberMapper.xml
 src/main/java/com/tencent/.DS_Store
 target/classes/com/tencent/.DS_Store
+src/main/resources/application.yml
+.vscode/launch.json
+pom.xml
 .gitignore
+src/main/resources/application.yml

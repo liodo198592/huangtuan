@@ -25,7 +25,7 @@
 
     <select id="getMemberall" resultMap="MemberMapper" parameterType="java.lang.Integer">
         SELECT `id`, `name`, `wxid`, `manage` 
-        FROM Member
+        FROM Member where delflag = 0
         order by `id` desc 
     </select>
 

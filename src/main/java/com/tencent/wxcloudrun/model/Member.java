@@ -15,5 +15,7 @@ public class Member implements Serializable {
   private String wxid;
 
   private String manage;
+
+  private Integer delflag;
   
 }
