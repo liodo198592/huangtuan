@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tencent.wxcloudrun.dao.KaoqindetailMapper">
+
+    <resultMap id="KaoqindetailMapper" type="com.tencent.wxcloudrun.model.Kaoqindetail">
+        <id property="id" column="id"/>
+        <result property="kaoqinid" column="kaoqinid"/>
+        <result property="kaoqinuser" column="kaoqinuser"/>
+        <result property="desc" column="desc"/>
+        <result property="createtime" column="createtime" javaType="java.time.LocalDateTime"  />
+        <result property="isaction" column="isaction"/>
+    </resultMap>
+
+    <select id="getKaoqindetail" resultMap="KaoqindetailMapper" parameterType="java.lang.Integer">
+        SELECT `id`, `kaoqinid`, `kaoqinuser`, `desc`, `createtime`, `isaction` 
+        FROM Kaoqindetail
+        WHERE id = #{id}
+    </select>
+
+    <select id="getKaoqindetailbykaoqinid" resultMap="KaoqindetailMapper" parameterType="java.lang.Integer">
+        SELECT `id`, `kaoqinid`, `kaoqinuser`, `desc`, `createtime`, `isaction` 
+        FROM Kaoqindetail
+        WHERE kaoqinid = #{id}
+    </select>
+
+    <select id="getKaoqindetailall" resultMap="KaoqindetailMapper" parameterType="java.lang.Integer">
+        SELECT `id`, `kaoqinid`, `kaoqinuser`, `desc`, `createtime`, `isaction` 
+        FROM Kaoqindetail
+        order by `id` desc
+    </select>
+
+    <delete id="clearKaoqindetail" parameterType="com.tencent.wxcloudrun.model.Kaoqindetail">
+        DELETE
+        FROM Kaoqindetail
+        where `kaoqinid` = #{kaoqinid} and `kaoqinuser` = #{kaoqinuser}
+    </delete>
+
+    <update id="upsertKaoqindetail" parameterType="com.tencent.wxcloudrun.model.Kaoqindetail">
+        INSERT INTO `Kaoqindetail`(`kaoqinid`, `kaoqinuser`,  `desc`, `createtime`, `isaction` )
+        VALUE(#{kaoqinid}, #{kaoqinuser},  #{desc}, #{createtime}, #{isaction}) 
+    </update>
+
+</mapper>

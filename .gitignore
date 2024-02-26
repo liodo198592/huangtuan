@@ -60,3 +60,10 @@ target/classes/mapper/KaoqinMapper.xml
 src/main/.DS_Store
 src/.DS_Store
 .DS_Store
+target/classes/com/tencent/wxcloudrun/controller/KaoqindetailController.class
+target/classes/com/tencent/wxcloudrun/dao/KaoqindetailMapper.class
+target/classes/com/tencent/wxcloudrun/dto/KaoqindetailRequest.class
+target/classes/com/tencent/wxcloudrun/model/Kaoqindetail.class
+target/classes/com/tencent/wxcloudrun/service/KaoqindetailService.class
+target/classes/com/tencent/wxcloudrun/service/impl/KaoqindetailServiceImpl.class
+target/classes/mapper/KaoqindetailMapper.xml
