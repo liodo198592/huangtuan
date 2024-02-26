@@ -17,4 +17,6 @@ public interface KaoqindetailMapper {
   void upsertKaoqindetail(Kaoqindetail kaoqindetail);
 
   void clearKaoqindetail(Kaoqindetail kaoqindetail);
+
+  void insertKaoqinBatch(List<Kaoqindetail> list);
 }

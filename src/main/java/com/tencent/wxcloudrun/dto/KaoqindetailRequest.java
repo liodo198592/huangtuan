@@ -17,6 +17,6 @@ public class KaoqindetailRequest {
 
   private LocalDateTime createtime;
 
-  private Integer isaction;
+  private Integer active;
 
 }

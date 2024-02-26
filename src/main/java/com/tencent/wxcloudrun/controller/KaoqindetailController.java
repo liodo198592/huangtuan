@@ -3,6 +3,7 @@ package com.tencent.wxcloudrun.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.tencent.wxcloudrun.config.ApiResponse;
+import com.tencent.wxcloudrun.dto.KaoqindetailInsertRequest;
 import com.tencent.wxcloudrun.dto.KaoqindetailRequest;
 import com.tencent.wxcloudrun.model.Kaoqindetail;
 import com.tencent.wxcloudrun.service.KaoqindetailService;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -76,21 +78,31 @@ public class KaoqindetailController {
    * @return API response json
    */
   @PostMapping(value = "/api/kaoqindetailcreate")
-  ApiResponse create(@RequestBody KaoqindetailRequest request) {
+  ApiResponse create(@RequestBody KaoqindetailInsertRequest request) {
     logger.info("/api/kaoqindetailcreate post request, action: {}", request.toString());
 
-    Kaoqindetail kaoqindetail = new Kaoqindetail();
 
-    kaoqindetail.setKaoqinid(request.getKaoqinid());
-    kaoqindetail.setKaoqinuser(request.getKaoqinuser());
-    kaoqindetail.setDesc(request.getDesc());
-    kaoqindetail.setIsaction(0);
-    kaoqindetail.setCreatetime(LocalDateTime.now());
+    //清理现有数据
+    int kaoqinid = request.getKaoqinid();
+    Kaoqindetail deleteunit = new Kaoqindetail();
+    deleteunit.setKaoqinid(kaoqinid);
+    kaoqindetailService.clearKaoqindetail(deleteunit);
 
-    kaoqindetailService.clearKaoqindetail(kaoqindetail);
+    //插入新数据
 
-    kaoqindetailService.upsertKaoqindetail(kaoqindetail);
-    return ApiResponse.ok(kaoqindetail);
+    List<Kaoqindetail> kaoqindetailList = new ArrayList<>();
+    for (KaoqindetailRequest item : request.getKaoqinlist()) {
+      Kaoqindetail kaoqindetail = new Kaoqindetail();
+      kaoqindetail.setKaoqinid(kaoqinid);
+      kaoqindetail.setKaoqinuser(String.valueOf(item.getId()));
+      kaoqindetail.setDesc(item.getDesc());
+      kaoqindetail.setIsaction(item.getActive());
+      kaoqindetail.setCreatetime(LocalDateTime.now());
+      kaoqindetailList.add(kaoqindetail);
+    }
+
+    kaoqindetailService.insertKaoqinBatch(kaoqindetailList);
+    return ApiResponse.ok(kaoqindetailList);
   }
   
 }

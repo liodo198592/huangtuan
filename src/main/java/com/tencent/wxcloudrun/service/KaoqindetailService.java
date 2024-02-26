@@ -13,6 +13,8 @@ public interface KaoqindetailService {
 
   List<Kaoqindetail> getKaoqindetailall();
 
+  void insertKaoqinBatch(List<Kaoqindetail> list);
+
   void upsertKaoqindetail(Kaoqindetail kaoqindetail);
 
   void clearKaoqindetail(Kaoqindetail kaoqindetail);

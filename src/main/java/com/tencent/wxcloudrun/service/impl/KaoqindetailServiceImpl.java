@@ -29,6 +29,11 @@ public class KaoqindetailServiceImpl implements KaoqindetailService {
   }
 
   @Override
+  public void insertKaoqinBatch(List<Kaoqindetail> list){
+    kaoqindetailMapper.insertKaoqinBatch(list);
+  }
+
+  @Override
   public List<Kaoqindetail> getKaoqindetailall() {
     return kaoqindetailMapper.getKaoqindetailall();
   }

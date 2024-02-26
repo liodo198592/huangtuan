@@ -32,12 +32,20 @@
     <delete id="clearKaoqindetail" parameterType="com.tencent.wxcloudrun.model.Kaoqindetail">
         DELETE
         FROM Kaoqindetail
-        where `kaoqinid` = #{kaoqinid} and `kaoqinuser` = #{kaoqinuser}
+        where `kaoqinid` = #{kaoqinid}
     </delete>
 
     <update id="upsertKaoqindetail" parameterType="com.tencent.wxcloudrun.model.Kaoqindetail">
         INSERT INTO `Kaoqindetail`(`kaoqinid`, `kaoqinuser`,  `desc`, `createtime`, `isaction` )
         VALUE(#{kaoqinid}, #{kaoqinuser},  #{desc}, #{createtime}, #{isaction}) 
+    </update>
+
+    <update id="insertKaoqinBatch" parameterType="java.util.List">
+        INSERT INTO `Kaoqindetail`(`kaoqinid`, `kaoqinuser`,  `desc`, `createtime`, `isaction` )
+        VALUES
+        <foreach collection ="list" item="kaoqindetail" separator =",">
+            (#{kaoqindetail.kaoqinid}, #{kaoqindetail.kaoqinuser},#{kaoqindetail.desc},#{kaoqindetail.createtime},#{kaoqindetail.isaction})
+        </foreach>
     </update>
 
 </mapper>

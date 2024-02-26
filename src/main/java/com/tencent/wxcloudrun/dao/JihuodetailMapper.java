@@ -1,6 +1,8 @@
 package com.tencent.wxcloudrun.dao;
 
 import com.tencent.wxcloudrun.model.Jihuodetail;
+import com.tencent.wxcloudrun.model.Kaoqindetail;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -17,4 +19,5 @@ public interface JihuodetailMapper {
   void upsertJihuodetail(Jihuodetail jihuodetail);
 
   void clearJihuodetail(Jihuodetail jihuodetail);
+
 }
