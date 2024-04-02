@@ -56,7 +56,7 @@
     <select id="getJihuoCallTask" resultMap="JihuoMapper" parameterType="java.lang.Integer">
         SELECT `id`, `posx`, `posy`, `desc`, `user`, `jihuotime`, `createtime` ,`iscalled`
         FROM Jihuo
-        where `jihuotime` &gt;= DATE_SUB(NOW(), INTERVAL #{minite} MINUTE) and `jihuotime` &lt;= NOW() and `iscalled` = 0;
+        where `jihuotime` &gt;= DATE_SUB(NOW(), INTERVAL #{minite} MINUTE) and NOW() &lt;= `jihuotime` and `iscalled` = 0;
     </select>
 
     <select id="getcallmember" resultMap="MemberMapper" parameterType="java.lang.Integer">

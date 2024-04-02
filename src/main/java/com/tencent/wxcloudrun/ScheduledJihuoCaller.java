@@ -45,7 +45,7 @@ public class ScheduledJihuoCaller {
     public void reportCurrentTime() {
         System.out.println("开始检查通知调度：现在时间是：" + dateTimeFormatter.format(LocalDateTime.now()));
         //获取调度任务
-        List<Jihuo> jihuo = jihuoService.getJihuoCallTask(10);
+        List<Jihuo> jihuo = jihuoService.getJihuoCallTask(20);
         for (Jihuo j : jihuo) {
             //获取微信access token
             String accessToken= getAccessToken();
