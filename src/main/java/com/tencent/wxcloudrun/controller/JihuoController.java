@@ -103,7 +103,7 @@ public class JihuoController {
     jihuo.setUser(request.getUser());
     jihuo.setJihuotime(request.getJihuotime());
     jihuo.setCreatetime(LocalDateTime.now());
-    jihuo.setIscalled(request.getIscalled());
+    jihuo.setIscalled(0);
 
     jihuoService.upsertJihuo(jihuo);
     return ApiResponse.ok(jihuo);
