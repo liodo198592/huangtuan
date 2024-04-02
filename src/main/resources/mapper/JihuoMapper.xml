@@ -11,16 +11,25 @@
         <result property="count" column="count"/>
         <result property="jihuotime" column="jihuotime" javaType="java.time.LocalDateTime" />
         <result property="createtime" column="createtime" javaType="java.time.LocalDateTime"  />
+        <result property="iscalled" column="iscalled"/>
+    </resultMap>
+
+    <resultMap id="MemberMapper" type="com.tencent.wxcloudrun.model.Member">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="wxid" column="wxid"/>
+        <result property="manage" column="manage"/>
+        <result property="wxrealid" column="wxrealid"/>
     </resultMap>
 
     <select id="getJihuo" resultMap="JihuoMapper" parameterType="java.lang.Integer">
-        SELECT `id`, `posx`, `posy`, `desc`, `user`, `jihuotime`, `createtime` 
+        SELECT `id`, `posx`, `posy`, `desc`, `user`, `jihuotime`, `createtime` ,`iscalled` 
         FROM Jihuo
         WHERE id = #{id}
     </select>
 
     <select id="getJihuoall" resultMap="JihuoMapper" parameterType="java.lang.Integer">
-        SELECT `id`, `posx`, `posy`, `desc`, `user`, `jihuotime`, `createtime` 
+        SELECT `id`, `posx`, `posy`, `desc`, `user`, `jihuotime`, `createtime` ,`iscalled`
         FROM Jihuo
         order by `id` desc limit 10
     </select>
@@ -33,8 +42,26 @@
     </delete>
 
     <update id="upsertJihuo" parameterType="com.tencent.wxcloudrun.model.Jihuo">
-        INSERT INTO `Jihuo`(`posx`, `posy`, `desc`, `user`, `jihuotime`, `createtime`)
-        VALUE(#{posx}, #{posy}, #{desc}, #{user}, #{jihuotime}, #{createtime}) 
+        INSERT INTO `Jihuo`(`posx`, `posy`, `desc`, `user`, `jihuotime`, `createtime`,`iscalled`)
+        VALUE(#{posx}, #{posy}, #{desc}, #{user}, #{jihuotime}, #{createtime}, #{iscalled}) 
     </update>
+
+
+    <update id="updateJihuo" parameterType="com.tencent.wxcloudrun.model.Jihuo">
+        update `Jihuo` set `posx` = #{posx}, `posy`=#{posy}, `desc`=#{desc}, `user`=#{user}, `jihuotime`=#{jihuotime}
+        , `createtime`= #{createtime},`iscalled`=#{iscalled} 
+        where `id` = #{id}
+    </update>
+
+    <select id="getJihuoCallTask" resultMap="JihuoMapper" parameterType="java.lang.Integer">
+        SELECT `id`, `posx`, `posy`, `desc`, `user`, `jihuotime`, `createtime` ,`iscalled`
+        FROM Jihuo
+        where `jihuotime` &gt;= DATE_SUB(NOW(), INTERVAL #{minite} MINUTE) and `jihuotime` &lt;= NOW() and `iscalled` = 0;
+    </select>
+
+    <select id="getcallmember" resultMap="MemberMapper" parameterType="java.lang.Integer">
+        SELECT `id`, `name`, `wxid`, `manage` ,`wxrealid` FROM Member m where m.id in
+        (select canyuuser  from Jihuodetail where  jihuoid = #{id})
+    </select>
 
 </mapper>

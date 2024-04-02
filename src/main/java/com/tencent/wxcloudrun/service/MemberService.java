@@ -20,4 +20,6 @@ public interface MemberService {
 
   void clearMember(Integer id);
   
+  void updateRealwxid(Member member);
+
 }

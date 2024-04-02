@@ -13,7 +13,11 @@ public class MemberRequest {
 
   private String wxid;
 
+  private String wxrealid;
+
   private String manage;
 
   private Integer delflag;
+
+  private Integer iscalled;
 }

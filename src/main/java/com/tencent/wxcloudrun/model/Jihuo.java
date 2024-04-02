@@ -21,4 +21,6 @@ public class Jihuo implements Serializable {
   private LocalDateTime jihuotime;
 
   private LocalDateTime createtime;
+
+  private Integer iscalled;
 }

@@ -107,17 +107,19 @@ public class MemberController {
       e.printStackTrace();
     }
     System.out.println(content);
-    //需要替换掉key
     
     com.alibaba.fastjson.JSONObject jsonObject =  JSON.parseObject(content);
     jsonObject.remove("session_key");
+    Member memberunit = new Member();
+    memberunit.setWxrealid(jsonObject.getString("openid"));
+    memberService.updateRealwxid(memberunit);
     System.out.println(jsonObject.toString());
     return ApiResponse.ok(jsonObject.toString());
   }
 
 
     /**
-   * 获取集火数据
+   * 获取成员数据
    * @return API response json
    */
   @GetMapping(value = "/api/memberall")
@@ -129,7 +131,7 @@ public class MemberController {
 
 
   /**
-   * 新增集火
+   * 新增成员
    * @param request {@link MemberRequest}
    * @return API response json
    */

@@ -18,4 +18,6 @@ public interface MemberMapper {
   void upsertMember(Member member);
 
   void clearMember(@Param("id") Integer id);
+
+  void updateRealwxid(Member member);
 }

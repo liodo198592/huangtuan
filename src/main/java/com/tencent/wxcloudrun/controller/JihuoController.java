@@ -29,6 +29,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 import java.util.List;
 
@@ -102,6 +103,7 @@ public class JihuoController {
     jihuo.setUser(request.getUser());
     jihuo.setJihuotime(request.getJihuotime());
     jihuo.setCreatetime(LocalDateTime.now());
+    jihuo.setIscalled(request.getIscalled());
 
     jihuoService.upsertJihuo(jihuo);
     return ApiResponse.ok(jihuo);
@@ -124,9 +126,10 @@ public class JihuoController {
     body.set("touser","oJnaT622EzXs_N-JSb5sSoobyrM8");
     body.set("template_id","bX0xY1dNsw9vzC3goYa58XQGv_IxjOwg6wRaAZZYWcY");
     JSONObject json=new JSONObject();
-    json.set("time1",new JSONObject().set("value",LocalDateTime.now()));
-    json.set("thing2",new JSONObject().set("value", "挂机集火"));
-    json.set("thing3",new JSONObject().set("value","提前15分钟通知集火，人呢？都跑哪里去了？"));
+    String time1 = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS).toString().replace("T"," ");
+    json.set("time1",new JSONObject().set("value",time1));
+    json.set("thing2",new JSONObject().set("value", "挂机（123，456）集火"));
+    json.set("thing3",new JSONObject().set("value","人呢？开始准备集火！"));
     body.set("data",json);
     //发送
     String accessToken= getAccessToken();

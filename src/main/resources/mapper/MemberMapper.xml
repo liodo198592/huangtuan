@@ -7,10 +7,11 @@
         <result property="name" column="name"/>
         <result property="wxid" column="wxid"/>
         <result property="manage" column="manage"/>
+        <result property="wxrealid" column="wxrealid"/>
     </resultMap>
 
     <select id="getMember" resultMap="MemberMapper" parameterType="java.lang.Integer">
-        SELECT `id`, `name`, `wxid`, `manage` 
+        SELECT `id`, `name`, `wxid`, `manage` ,`wxrealid`
         FROM Member
         WHERE id = #{id}
     </select>
@@ -24,7 +25,7 @@
     </select>
 
     <select id="getMemberall" resultMap="MemberMapper" parameterType="java.lang.Integer">
-        SELECT `id`, `name`, `wxid`, `manage` 
+        SELECT `id`, `name`, `wxid`, `manage` ,`wxrealid`
         FROM Member where delflag = 0
         order by `id` desc 
     </select>
@@ -37,8 +38,13 @@
     </delete>
 
     <update id="upsertMember" parameterType="com.tencent.wxcloudrun.model.Member">
-        INSERT INTO `Member`(`name`, `wxid`, `manage` )
-        VALUE(#{name}, #{wxid}, #{manage}) 
+        INSERT INTO `Member`(`name`, `wxid`, `manage`,`wxrealid` )
+        VALUE(#{name}, #{wxid}, #{manage}, #{wxrealid}) 
+    </update>
+
+    <update id="updateRealwxid" parameterType="com.tencent.wxcloudrun.model.Member">
+        update  `Member` set `wxrealid` = #{wxrealid}
+        where  `wxid` = #{wxid}
     </update>
 
 </mapper>

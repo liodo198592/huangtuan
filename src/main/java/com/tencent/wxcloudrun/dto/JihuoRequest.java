@@ -20,5 +20,7 @@ public class JihuoRequest {
   private LocalDateTime jihuotime;
 
   private LocalDateTime createtime;
+  
+  private Integer iscalled;
 
 }

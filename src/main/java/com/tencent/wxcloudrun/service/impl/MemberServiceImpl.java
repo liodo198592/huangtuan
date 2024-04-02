@@ -45,4 +45,10 @@ public class MemberServiceImpl implements MemberService {
   public String getManage(String openid){
     return memberMapper.getManage(openid);
   }
+
+  @Override
+  public void updateRealwxid(Member member){
+    member.setWxid(member.getWxrealid().substring(0, 10) + "********" + member.getWxrealid().substring(member.getWxrealid().length() - 8));
+    memberMapper.updateRealwxid(member);
+  }
 }
