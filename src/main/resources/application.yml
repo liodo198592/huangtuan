@@ -1,13 +1,16 @@
 server:
-  port: 80
-
-
+  port: 8443 
+  ssl:  
+    key-store: classpath:bloodaugust0170.cn.jks  # 注意这里是.jks扩展名，表示JKS格式的密钥库  
+    key-store-password: 285tvj8239b982  # 替换为您的密钥库密码  
+    keyStoreType: JKS  # 指定密钥库类型为JKS  
+    key-alias: bloodaugust0170.cn  # 替换为您的密钥别名
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://sh-cynosdbmysql-grp-rzdl4iwi.sql.tencentcdb.com:23436/springboot_demo
-    username: root
-    password: 83TxU2MQ
+    url: jdbc:mysql://122.51.76.33:3306/huangtuan?characterEncoding=utf-8&useAffectedRows=true
+    username: huangtuan
+    password: Huangtuan0170
     #url: jdbc:mysql://${MYSQL_ADDRESS}/${MYSQL_DATABASE:springboot_demo}
     #username: ${MYSQL_USERNAME}
     #password: ${MySQL_PASSWORD}

@@ -16,6 +16,12 @@
         WHERE id = #{id}
     </select>
 
+    <select id="getMemberbyWxrealid" resultMap="MemberMapper" parameterType="java.lang.String">
+        SELECT `id`, `name`, `wxid`, `manage` ,`wxrealid`
+        FROM Member
+        WHERE wxrealid = #{wxrealid}
+    </select>
+
     <select id="getManage" resultType="String" parameterType="java.lang.String">
         SELECT `manage` 
         FROM Member
@@ -43,8 +49,8 @@
     </update>
 
     <update id="updateRealwxid" parameterType="com.tencent.wxcloudrun.model.Member">
-        update  `Member` set `wxrealid` = #{wxrealid}
-        where  `wxid` = #{wxid}
+        update  `Member` set  `name` = #{name}
+        where  `wxrealid` = #{wxrealid}
     </update>
 
 </mapper>

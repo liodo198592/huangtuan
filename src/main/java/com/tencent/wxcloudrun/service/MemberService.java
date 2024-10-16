@@ -12,6 +12,8 @@ public interface MemberService {
 
   Optional<Member> getMember(Integer id);
 
+  Optional<Member> getMemberbyWxrealid(String readid);
+
   String getManage(String openid);
 
   List<Member> getMemberall();

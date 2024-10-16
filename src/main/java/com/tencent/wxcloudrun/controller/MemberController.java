@@ -74,7 +74,7 @@ public class MemberController {
    * @return API response json
    */
   @GetMapping(value = "/api/getcode")
-  ApiResponse getcode(@RequestParam(value = "jscode") String jscode) {
+  ApiResponse getcode(@RequestParam(value = "jscode") String jscode,@RequestParam(value = "name") String name) {
     logger.info("/api/getcode get request");
     String url = "https://api.weixin.qq.com/sns/jscode2session?appid={0}&secret={1}&js_code={2}&grant_type=authorization_code";
     String replaceUrl = url.replace("{0}","wx6d2ef2da124dc60a").replace("{1}", "8f7174bcff462394b91c05d441854a20").replace("{2}", jscode);
@@ -112,7 +112,17 @@ public class MemberController {
     jsonObject.remove("session_key");
     Member memberunit = new Member();
     memberunit.setWxrealid(jsonObject.getString("openid"));
-    memberService.updateRealwxid(memberunit);
+    memberunit.setName(name);
+    if(memberService.getMemberbyWxrealid(memberunit.getWxrealid()).isPresent())
+    {
+      //更新
+      memberService.updateRealwxid(memberunit);
+    }
+    else
+    {
+      //插入
+      memberService.upsertMember(memberunit);
+    }
     System.out.println(jsonObject.toString());
     return ApiResponse.ok(jsonObject.toString());
   }

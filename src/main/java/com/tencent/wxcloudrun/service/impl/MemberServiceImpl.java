@@ -26,6 +26,11 @@ public class MemberServiceImpl implements MemberService {
   }
 
   @Override
+  public Optional<Member> getMemberbyWxrealid(String readid) {
+    return Optional.ofNullable(memberMapper.getMemberbyWxrealid(readid));
+  }
+
+  @Override
   public List<Member> getMemberall()
   {
     return memberMapper.getMemberall();
