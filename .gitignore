@@ -69,3 +69,10 @@ target/classes/com/tencent/wxcloudrun/service/impl/KaoqindetailServiceImpl.class
 target/classes/mapper/KaoqindetailMapper.xml
 target/classes/com/tencent/wxcloudrun/dto/KaoqindetailInsertRequest.class
 target/classes/com/tencent/wxcloudrun/ScheduledJihuoCaller.class
+target/classes/com/tencent/wxcloudrun/config/RedisConfig.class
+target/classes/com/tencent/wxcloudrun/controller/TeamController.class
+target/classes/com/tencent/wxcloudrun/dao/TeamMapper.class
+target/classes/com/tencent/wxcloudrun/model/Team.class
+target/classes/com/tencent/wxcloudrun/service/ITeamService.class
+target/classes/com/tencent/wxcloudrun/service/impl/TeamServiceImpl.class
+target/classes/mapper/TeamMapper.xml

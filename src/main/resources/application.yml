@@ -14,10 +14,15 @@ spring:
     #url: jdbc:mysql://${MYSQL_ADDRESS}/${MYSQL_DATABASE:springboot_demo}
     #username: ${MYSQL_USERNAME}
     #password: ${MySQL_PASSWORD}
+  autoconfigure:
+    exclude:
+      - com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration
   mvc:
     view:
       suffix: .html
       prefix: /
-
+  redis:
+      host: 122.51.76.33
+      port: 6379
 mybatis:
   mapper-locations: classpath*:mapper/*Mapper.xml
