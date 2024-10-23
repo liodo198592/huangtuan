@@ -1,6 +1,13 @@
 package com.tencent.wxcloudrun.service;
 
 import com.tencent.wxcloudrun.model.Team;
+
+
+
+import java.util.List;
+
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -10,5 +17,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @Version: V1.0
  */
 public interface ITeamService extends IService<Team> {
-
+    public IPage<Team> getTeambyname(Page<Team> page, String name);
 }

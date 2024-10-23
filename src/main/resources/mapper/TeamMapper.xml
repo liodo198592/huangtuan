@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tencent.wxcloudrun.dao.TeamMapper">
-
+    <resultMap id="TeamResultMap" type="com.tencent.wxcloudrun.model.Team">
+        <id column="id" property="id"/>
+        <result column="tongmeng" property="tongmeng"/>
+        <result column="fenzu" property="fenzu"/>
+        <result column="wanjia" property="wanjia"/>
+        <result column="duiwu" property="duiwu"/>
+        <result column="bingzhong" property="bingzhong"/>
+        <result column="daying" property="daying"/>
+        <result column="dayingzhuzhanfa" property="dayingzhuzhanfa"/>
+        <result column="dayingzhanfa1" property="dayingzhanfa1"/>
+        <result column="dayingzhanfa2" property="dayingzhanfa2"/>
+        <result column="zhongjun" property="zhongjun"/>
+        <result column="zhongjunzhuzhanfa" property="zhongjunzhuzhanfa"/>
+        <result column="zhongjunzhuzhanfa1" property="zhongjunzhuzhanfa1"/>
+        <result column="zhongjunzhuzhanfa2" property="zhongjunzhuzhanfa2"/>
+        <result column="qianfeng" property="qianfeng"/>
+        <result column="qianfengzhuzhanfa" property="qianfengzhuzhanfa"/>
+        <result column="qianfengzhuzhanfa1" property="qianfengzhuzhanfa1"/>
+        <result column="qianfengzhuzhanfa2" property="qianfengzhuzhanfa2"/>
+        <result column="shenglv" property="shenglv"/>
+        <result column="diwozhansunbi" property="diwozhansunbi"/>
+        <result column="zhanbao" property="zhanbao"/>
+    </resultMap>
+    <select id="getTeambyname" resultMap="TeamResultMap" parameterType="java.lang.String">
+        SELECT t.`id`,t.`tongmeng`, t.`fenzu`,t.`wanjia`,t.`duiwu`,t.`bingzhong`,t.`daying`,t.`dayingzhuzhanfa`,
+               t.`dayingzhanfa1`,t.`dayingzhanfa2`,t.`zhongjun`,t.`zhongjunzhuzhanfa`,t.`zhongjunzhuzhanfa1`,t.`zhongjunzhuzhanfa2`,
+               t.`qianfeng`,t.`qianfengzhuzhanfa`,t.`qianfengzhuzhanfa1`,t.`qianfengzhuzhanfa2`,t.`shenglv`,t.`diwozhansunbi`,t.`zhanbao`
+        FROM team t WHERE t.`wanjia` LIKE CONCAT('%', #{name}, '%')  and (t.`daying` != '' AND t.`zhongjun` != '' AND t.`qianfeng` != '')
+        and t.`zuidabingli` > 18000 and t.`zhuli` = 1 and (t.`duiwu`,t.`zuihoushijian`) in (
+            SELECT st.`duiwu`, max(st.`zuihoushijian`) from team st where st.`wanjia` LIKE CONCAT('%', #{name}, '%')  and (
+                   st.`daying` != '' AND st.`zhongjun` != '' AND st.`qianfeng` != '')
+                   and st.`zuidabingli` > 18000 and st.`zhuli` = 1 group by st.`duiwu`) ORDER BY t.`zuihoushijian` DESC
+    </select>
 </mapper>

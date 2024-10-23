@@ -200,7 +200,7 @@ public class Team {
     @ApiModelProperty(value = "zhanbao")
 	private java.lang.String zhanbao;
 	/**id*/
-	@TableId(type = IdType.ASSIGN_UUID)
+	@TableId(type = IdType.AUTO)
     @ApiModelProperty(value = "id")
 	private java.lang.Integer id;
 }

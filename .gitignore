@@ -76,3 +76,9 @@ target/classes/com/tencent/wxcloudrun/model/Team.class
 target/classes/com/tencent/wxcloudrun/service/ITeamService.class
 target/classes/com/tencent/wxcloudrun/service/impl/TeamServiceImpl.class
 target/classes/mapper/TeamMapper.xml
+target/classes/com/tencent/wxcloudrun/controller/CalllogController.class
+target/classes/com/tencent/wxcloudrun/dao/CalllogMapper.class
+target/classes/com/tencent/wxcloudrun/model/Calllog.class
+target/classes/com/tencent/wxcloudrun/service/ICalllogService.class
+target/classes/com/tencent/wxcloudrun/service/impl/CalllogServiceImpl.class
+target/classes/mapper/CalllogMapper.xml
